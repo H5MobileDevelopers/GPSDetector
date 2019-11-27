@@ -11,27 +11,35 @@ export class HomePage implements OnInit {
 
   lat;
   lng;
-  coordinated = [{lat: 5.5, lng: 80.555}];
+  lastCoords = {lat: 5.5, lng: 80.555};
+  currentCoords;
   lastGap;
-  ngOnInit() {
+  async ngOnInit() {
+    this.getLocation();
+    await this.delay(10000);
+    // console.log('x' , this.currentCoords, this.lastCoords);
+    this.ngOnInit();
   }
-  getLocation() {
-    this.geolocation.getCurrentPosition().then((resp) => {
+  async getLocation() {
+    this.geolocation.getCurrentPosition().then(async (resp) => {
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
       const coords = {
         lat: this.lat,
         lng: this.lng
       };
-      const lastLoc = this.coordinated[this.coordinated.length - 1];
-      this.getDistanceFromLoc(lastLoc, coords);
-      this.coordinated.push(coords);
+      this.currentCoords = coords;
+      this.getDistanceFromLoc(this.lastCoords, coords);
+      await this.delay(500);
+      if (this.lastGap !== 0) {
+        console.log('rest call', this.currentCoords);
+      } else {
+        console.log('Not rest call');
+      }
+      this.lastCoords = this.currentCoords;
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-  }
-  getCoords() {
-    console.log(this.coordinated);
   }
   getDistanceFromLoc(loc1, loc2) {
     const R = 6371; // km
@@ -49,4 +57,7 @@ export class HomePage implements OnInit {
     return Value * Math.PI / 180;
   }
 
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 }

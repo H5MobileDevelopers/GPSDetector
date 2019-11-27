@@ -3,7 +3,24 @@
   overflow: hidden;
 }
 
-span{
+.green{
   color: #0ec254;
+}
+
+.red {
+  color: #f04141;
+  font-weight: bold;
+}
+
+.black {
+  color: #222428;
+  font-weight: bold;
+}
+
+span{
   margin-left: 20px;
+}
+
+ion-item{
+  text-align: center;
 }

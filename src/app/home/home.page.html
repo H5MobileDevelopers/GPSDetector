@@ -1,25 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color="primary">
-      Home
+    <ion-title color="dark">
+      <img src="assets/icon/gps.png" width="20" height="20"> GPS LOCATION DETECTOR
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-button (click)="getLocation()">Get Location</ion-button>
-  <ion-card>
+  <div style="text-align: center">
+    <img src="assets/images/logo.png" width="150" height="150">
+  </div>
+
+  <div style="text-align: center">
+    <ion-button color="danger">Last Location</ion-button>
+    <ion-card>
+      <ion-list *ngIf="lastCoords">
+        <ion-item>Latitude : <span class="red">{{lastCoords.lat}}</span></ion-item>
+        <ion-item>Longitude : <span class="red">{{lastCoords.lng}}</span></ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+
+  <div style="text-align: center">
+    <ion-button>Current Location</ion-button>
+    <ion-card>
+      <ion-list *ngIf="currentCoords">
+        <ion-item>Latitude : <span class="green">{{currentCoords.lat}}</span></ion-item>
+        <ion-item>Longitude : <span class="green">{{currentCoords.lng}}</span></ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+
+  <div style="text-align: center">
+    <ion-button color="dark">Last Gap</ion-button>
     <ion-list>
-      <ion-item>Latitude : <span>{{lat}}</span></ion-item>
-      <ion-item>Longitude : <span>{{lng}}</span></ion-item>
-      <ion-item *ngIf="lastGap">Last Gap : <span>{{lastGap}} Km</span></ion-item>
+    <ion-item *ngIf="lastGap"><span class="black">{{lastGap}} Km</span></ion-item>
     </ion-list>
-  </ion-card>
-  <ion-row>
-    <ion-col col-md-8></ion-col>
-    <ion-col col-md-6>
-      <ion-button color="danger" (click)="getCoords()">ViewCoords</ion-button>
-    </ion-col>
-  </ion-row>
+  </div>
 
 </ion-content>
