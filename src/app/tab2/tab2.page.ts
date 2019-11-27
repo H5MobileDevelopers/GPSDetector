@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MapService} from '../services/map.service';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
-  constructor() {}
-
+  zoom = 17;
+  constructor(public service: MapService) {}
 }

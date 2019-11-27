@@ -9,11 +9,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {AgmCoreModule} from '@agm/core';
+import {environment} from '../environments/environment';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
-    IonicModule.forRoot(), AppRoutingModule],
+    IonicModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleAPI
+    }),
+    AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
