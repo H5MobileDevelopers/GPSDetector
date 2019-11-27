@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center">
-    <ion-button color="danger">Last Location</ion-button>
+    <ion-button expand="full" color="danger">Last Location</ion-button>
     <ion-card>
       <ion-list *ngIf="lastCoords">
         <ion-item>Latitude : <span class="red">{{lastCoords.lat}}</span></ion-item>
@@ -22,7 +22,8 @@
   </div>
 
   <div style="text-align: center">
-    <ion-button>Current Location</ion-button>
+    <ion-button expand="full">Current Location</ion-button>
+
     <ion-card>
       <ion-list *ngIf="currentCoords">
         <ion-item>Latitude : <span class="green">{{currentCoords.lat}}</span></ion-item>
@@ -32,9 +33,9 @@
   </div>
 
   <div style="text-align: center">
-    <ion-button color="dark">Last Gap</ion-button>
+    <ion-button expand="full" color="dark">Last Gap</ion-button>
     <ion-list>
-    <ion-item *ngIf="lastGap"><span class="black">{{lastGap}} Km</span></ion-item>
+    <ion-item *ngIf="lastGap"><span class="black">{{lastGap}} Meters</span></ion-item>
     </ion-list>
   </div>
 

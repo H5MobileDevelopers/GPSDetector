@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      <img src="assets/icon/gps.png" width="20" height="20"> Map View
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <agm-map *ngIf="service._currentLocation" [zoom]="zoom" [latitude]="service._currentLocation.lat" [longitude]="service._currentLocation.lng">
+    <agm-marker [latitude]="service._currentLocation.lat" [longitude]="service._currentLocation.lng"></agm-marker>
+  </agm-map>
+</ion-content>

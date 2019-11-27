@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import {MapService} from '../services/map.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'home.page.html',
@@ -7,7 +8,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class HomePage implements OnInit {
 
-  constructor(private geolocation: Geolocation) {}
+  constructor(private geolocation: Geolocation,
+              public mapService: MapService) {}
 
   lat;
   lng;
@@ -32,9 +34,10 @@ export class HomePage implements OnInit {
       this.getDistanceFromLoc(this.lastCoords, coords);
       await this.delay(500);
       if (this.lastGap !== 0) {
-        console.log('rest call', this.currentCoords);
+        this.mapService.setCurrentLocation(this.currentCoords);
+        // console.log('A rest call', this.currentCoords);
       } else {
-        console.log('Not rest call');
+        // console.log('Not a rest call');
       }
       this.lastCoords = this.currentCoords;
     }).catch((error) => {
@@ -51,7 +54,7 @@ export class HomePage implements OnInit {
         Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c;
-    this.lastGap = d;
+    this.lastGap = d * 1000;
   }
   toRad(Value) {
     return Value * Math.PI / 180;
