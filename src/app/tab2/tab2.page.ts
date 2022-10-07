@@ -8,5 +8,5 @@ import {MapService} from '../services/map.service';
 })
 export class Tab2Page {
   zoom = 17;
-  constructor(public service: MapService) {}
+  constructor(public mapService: MapService) {}
 }

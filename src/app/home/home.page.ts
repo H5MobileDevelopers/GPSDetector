@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
       this.getDistanceFromLoc(this.lastCoords, coords);
       await this.delay(500);
       if (this.lastGap !== 0) {
-        this.mapService.setCurrentLocation(this.currentCoords);
+        this.mapService.currentLocation = this.currentCoords;
         // console.log('A rest call', this.currentCoords);
       } else {
         // console.log('Not a rest call');

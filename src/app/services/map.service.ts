@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class MapService {
 
-  currentLocation;
+  private _currentLocation: any;
   constructor() { }
-  setCurrentLocation(location) {
-    this.currentLocation = location;
+  set currentLocation(location: any) {
+    this._currentLocation = location;
   }
-  get _currentLocation() {
-    return this.currentLocation;
+  get currentLocation(): any {
+    return this._currentLocation;
   }
 }
